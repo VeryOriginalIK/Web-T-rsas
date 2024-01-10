@@ -3,7 +3,7 @@ import Enums from "./enums.js";
 const container = document.querySelector(".tiles");
 
 const GenerateBuff = () => {
-	const randomNum = Math.floor(Math.random() * 42) + 1;
+	const randomNum = Math.floor(Math.random() * 50) + 1;
 	if (randomNum == 1) {
 		return Enums.Nehezites;
 	} else if (randomNum == 2) {
@@ -48,5 +48,5 @@ class Tile {
 	}
 }
 
-matrix = GenerateMatrix();
+let matrix = GenerateMatrix();
 Render();
