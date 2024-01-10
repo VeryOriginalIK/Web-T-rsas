@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.tile {
+  width: 4%;
+  border: 1px solid black;
+  float: left;
+}
