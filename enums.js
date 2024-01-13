@@ -1,7 +1,7 @@
 const Enums = {
-	SimaMezo: 2,
-	Nehezites: 1,
-	Konnyites: 0,
+	SimaMezo: 0,
+	Nehezites: -1,
+	Konnyites: 1,
 };
 
 export default Enums;
