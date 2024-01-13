@@ -16,4 +16,11 @@ body {
 	border: 1px solid black;
 	box-sizing: border-box;
 	float: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.symbol {
+	font-size: 30px;
 }
