@@ -10,6 +10,12 @@ body {
 	height: 1000px;
 }
 
+#bal,#jobb{
+	width: 35%;
+	height: 100%;
+	text-align: center;
+}
+
 .tile {
 	width: 4%;
 	height: 40px;

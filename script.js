@@ -1,10 +1,13 @@
 import Enums from "./enums.js";
 
+
 const container = document.querySelector(".tiles");
 let currentSymbol;
 let usedUpCells;
 let matrix;
 let isNehezitesActive;
+let jatekos1 = "";
+let jatekos2 = "";
 
 const GenerateBuff = () => {
 	const randomNum = Math.floor(Math.random() * 50) + 1;
@@ -143,6 +146,14 @@ const Render = () => {
 	}
 };
 
+const Jatekosok = () => {
+	let bal = document.querySelector('#bal');
+	let jobb = document.querySelector('#jobb');
+	bal.querySelector("nev").innerHTML = jatekos1;
+	jobb.querySelector("nev").innerHTML = jatekos2;
+
+	
+}
 class Tile {
 	constructor(type) {
 		this.type = type; //1 - könnyítés / 0 - sima mező / -1 - nehezítés
