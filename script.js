@@ -1,13 +1,10 @@
 import Enums from "./enums.js";
 
-
 const container = document.querySelector(".tiles");
 let currentSymbol;
 let usedUpCells;
 let matrix;
 let isNehezitesActive;
-let jatekos1 = "";
-let jatekos2 = "";
 
 const GenerateBuff = () => {
 	const randomNum = Math.floor(Math.random() * 50) + 1;
@@ -126,6 +123,16 @@ const HandleClick = (x, y) => {
 	}
 };
 
+const Jatekosok = () => {
+	let bal = document.querySelector('#bal');
+	let jobb = document.querySelector('#jobb');
+	let jatekos1 = new Jatekos(bal.innerText);
+	let jatekos2 = new Jatekos(jobb.innerText);
+	bal.querySelector(".nev").innerHTML = jatekos1;
+	jobb.querySelector(".nev").innerHTML = jatekos2;
+
+}
+
 const Render = () => {
 	container.innerHTML = "";
 	for (let i = 0; i < 25; i++) {
@@ -146,14 +153,7 @@ const Render = () => {
 	}
 };
 
-const Jatekosok = () => {
-	let bal = document.querySelector('#bal');
-	let jobb = document.querySelector('#jobb');
-	bal.querySelector("nev").innerHTML = jatekos1;
-	jobb.querySelector("nev").innerHTML = jatekos2;
 
-	
-}
 class Tile {
 	constructor(type) {
 		this.type = type; //1 - könnyítés / 0 - sima mező / -1 - nehezítés
@@ -165,12 +165,21 @@ class Tile {
 	}
 }
 
+class Jatekos {
+	constructor(nev) {
+		this.nev = nev;
+		this.pontok = 0;
+	}
+}
+
 const ResetGame = () => {
 	matrix = GenerateMatrix();
 	usedUpCells = [];
 	isNehezitesActive = false;
 	currentSymbol = "x";
+	Jatekosok();
 	Render();
 };
 
-ResetGame();
+if(!document.querySelector("#form"))
+	ResetGame();

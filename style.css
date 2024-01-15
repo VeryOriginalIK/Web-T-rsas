@@ -3,6 +3,9 @@ body {
 	padding: 0;
 	display: flex;
 	justify-content: center;
+	font-family: Arial, sans-serif;
+	background: rgb(1,180,237);
+	background: linear-gradient(90deg, rgba(1,180,237,1) 35%, rgba(1,237,167,1) 50%);
 }
 
 .tiles {
@@ -11,10 +14,12 @@ body {
 }
 
 #bal,#jobb{
-	width: 35%;
+	width: 30%;
 	height: 100%;
 	text-align: center;
 }
+
+
 
 .tile {
 	width: 4%;
@@ -29,4 +34,55 @@ body {
 
 .symbol {
 	font-size: 30px;
+}
+
+
+label {
+	display: block;
+	margin-bottom: 8px;
+}
+
+input, output {
+	width: 100%;
+	margin-bottom: 16px;
+}
+
+output {
+	display: inline-block;
+	font-weight: bold;
+}
+
+input[type="text"]:focus {
+	border: none;
+	border-bottom: 4px solid darkblue;
+	outline: none;
+	text-decoration: none;
+	background: linear-gradient(
+		135deg,
+		rgba(58, 180, 175, 0) 0%,
+		rgba(255, 255, 255, 0.15) 100%
+	);
+}
+
+.inp {
+	height: 30px;
+	border: none;
+	border-bottom: 2px solid black;
+	transition: all ease-in-out 0.7s;
+	background-color: transparent;
+	padding: 5px;
+}
+
+.btn {
+	font-size: 18px;
+	scale: 100%;
+	background: rgb(55, 37, 255);
+	transition: all ease-in-out 0.4s;
+	border-radius: 30px;
+	margin-top: 20px;
+	padding: 20px 80px;
+}
+
+.btn:hover {
+	scale: 110%;
 }
