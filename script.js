@@ -126,10 +126,10 @@ const HandleClick = (x, y) => {
 const Jatekosok = () => {
 	let bal = document.querySelector('#bal');
 	let jobb = document.querySelector('#jobb');
-	let jatekos1 = new Jatekos(bal.innerText);
-	let jatekos2 = new Jatekos(jobb.innerText);
-	bal.querySelector(".nev").innerHTML = jatekos1;
-	jobb.querySelector(".nev").innerHTML = jatekos2;
+	let jatekos1 = new Jatekos(document.querySelector("#player1").value);
+	let jatekos2 = new Jatekos(document.querySelector("#player2").value);
+	bal.querySelector(".nev").innerHTML = jatekos1.nev;
+	jobb.querySelector(".nev").innerHTML = jatekos2.nev;
 
 }
 
@@ -181,5 +181,4 @@ const ResetGame = () => {
 	Render();
 };
 
-if(!document.querySelector("#form"))
-	ResetGame();
+ResetGame();
