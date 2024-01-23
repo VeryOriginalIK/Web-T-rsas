@@ -6,6 +6,9 @@ let usedUpCells;
 let matrix;
 let isNehezitesActive;
 
+
+
+
 const GenerateBuff = () => {
 	const randomNum = Math.floor(Math.random() * 50) + 1;
 	if (randomNum == 1) {
@@ -124,13 +127,12 @@ const HandleClick = (x, y) => {
 };
 
 const Jatekosok = () => {
-	let bal = document.querySelector('#bal');
-	let jobb = document.querySelector('#jobb');
-	let jatekos1 = new Jatekos(document.querySelector("#player1").value);
-	let jatekos2 = new Jatekos(document.querySelector("#player2").value);
+	let jatekos1 = new Jatekos(localStorage.getItem("name1"));
+	let jatekos2 = new Jatekos(localStorage.getItem("name2"));
 	bal.querySelector(".nev").innerHTML = jatekos1.nev;
 	jobb.querySelector(".nev").innerHTML = jatekos2.nev;
-
+	bal.querySelector(".pontok").innerHTML = jatekos1.pontok;
+	jobb.querySelector(".pontok").innerHTML = jatekos2.pontok;
 }
 
 const Render = () => {
@@ -172,6 +174,16 @@ class Jatekos {
 	}
 }
 
+const FormBeadva = () =>{
+	localStorage.setItem("name1",document.querySelector("#player1").value);
+	localStorage.setItem("name2",document.querySelector("#player2").value);
+	localStorage.setItem("nehezites", document.querySelector("#slider").value)
+	localStorage.setItem("pont1",0);
+	localStorage.setItem("pont2",0);
+	document.querySelector("#form").remove()
+	ResetGame();
+}
+
 const ResetGame = () => {
 	matrix = GenerateMatrix();
 	usedUpCells = [];
@@ -181,4 +193,5 @@ const ResetGame = () => {
 	Render();
 };
 
-ResetGame();
+
+export {FormBeadva, ResetGame}

@@ -11,6 +11,7 @@
 <body>
 	<div id="bal">
 		<h1 class="nev"></h1>
+		<h2 class="pontok"></h2>
 
 	</div>
 	<div id="form">
@@ -19,7 +20,7 @@
 			<p>A kihívások és könnyítések izgalmas keveredése <br>a <b>FlowBoard Tic-Tac-Toe</b> játékban, <br>ahol minden mező új stratégiai lehetőséget kínál!</p>
 		</div>
 		<div class="cim">
-			<form onsubmit="FormBeadva(); return false">
+			<form >
 				<label for="player1"><b>1. Játékos neve:</b></label>
 				<input type="text" id="player1" name="player1" placeholder="Adj meg egy nevet" class="inp" required>
 				<br>
@@ -28,7 +29,7 @@
 				<label for="player2"><b>2. Játékos neve:</b></label>
 				<input type="text" id="player2" name="player2" placeholder="Adj meg egy másik nevet" class="inp" required>
 				<br>
-				<br>
+		<br>
 				<br>
 				<label for="slider"><b>Könnyítést/nehezítést tartalmazó cellák száma:</b></label>
 				<br>
@@ -36,7 +37,7 @@
 				<output for="slider">10</output>
 				<br>
 				<br>
-				<button type="submit" class="btn cim"><b>Tovább</b></button>
+				<button onclick="FormBeadva()" type="button" class="btn cim"><b>Tovább</b></button>
 			</form>
 		</div>
 	</div>
@@ -46,20 +47,18 @@
 	</div>
 	<div id="jobb">
 		<h1 class="nev"></h1>
+		<h2 class="pontok"></h2>
 
 	</div>
-
-	<script>
+	<script type="module">
+		import {FormBeadva} from "./script.js";
+		window.FormBeadva = FormBeadva
 		const slider = document.getElementById('slider');
 		const output = document.querySelector('output[for="slider"]');
-
-		slider.addEventListener('input', function() {
-		  output.textContent = this.value;
+			slider.addEventListener('input', function() {
+			output.textContent = this.value;
 		});
 	</script>
-	<script>
-	function FormBeadva() {document.querySelector("#form").remove()}</script>
-	<script type="module" src="script.js"></script>
 </body>
 
 </html>
