@@ -3,20 +3,21 @@ import Enums from "./enums.js";
 const container = document.querySelector(".tiles");
 let currentSymbol;
 let usedUpCells;
-let matrix;
+let matrix = [];
 let isNehezitesActive;
-
+let nehezites;
 
 
 
 const GenerateBuff = () => {
-	const randomNum = Math.floor(Math.random() * 50) + 1;
-	if (randomNum == 1) {
-		return Enums.Nehezites;
-	} else if (randomNum == 2) {
-		return Enums.Konnyites;
+	console.log(matrix)
+	for(let i = 0; i < nehezites; i++)
+	{
+		let randomindex = Math.floor(Math.random() * matrix.length)
+		console.log(matrix[randomindex])
+	
 	}
-	return Enums.SimaMezo;
+	console.log(i)
 };
 
 const GenerateMatrix = () => {
@@ -24,7 +25,7 @@ const GenerateMatrix = () => {
 	for (let i = 0; i < 25; i++) {
 		let row = [];
 		for (let j = 0; j < 25; j++) {
-			row.push(new Tile(GenerateBuff()));
+			row.push(new Tile(Enums.SimaMezo));
 		}
 		matrix.push(row);
 	}
@@ -185,7 +186,8 @@ const FormBeadva = () =>{
 }
 
 const ResetGame = () => {
-	matrix = GenerateMatrix();
+	nehezites = localStorage.getItem("nehezites")
+	matrix = GenerateBuff(GenerateMatrix());
 	usedUpCells = [];
 	isNehezitesActive = false;
 	currentSymbol = "x";
