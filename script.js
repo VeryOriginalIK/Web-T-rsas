@@ -9,15 +9,17 @@ let nehezites;
 
 
 
-const GenerateBuff = () => {
-	console.log(matrix)
-	for(let i = 0; i < nehezites; i++)
+const GenerateBuff = (matrix) => {
+	let index = 0
+	for(let index = 0; index < nehezites*2; index++)
 	{
-		let randomindex = Math.floor(Math.random() * matrix.length)
-		console.log(matrix[randomindex])
-	
+		let oszlop = Math.floor(Math.random() * matrix.length)
+		let sor = Math.floor(Math.random() * matrix.length)
+		let nehezvagykonnyu = Math.floor(Math.random() * 2 ) + 1
+		matrix[oszlop][sor].type = nehezvagykonnyu
+		console.log(oszlop + " " + sor)
 	}
-	console.log(i)
+	return matrix
 };
 
 const GenerateMatrix = () => {
@@ -106,6 +108,12 @@ const HandleClick = (x, y) => {
 		alert(`${currentSymbol} ellenfele kétszer léphet, mert felszedett egy nehezítést!`);
 	}
 	if (WinCheck()) {
+		if(currentSymbol == "x"){
+			localStorage.setItem("pont1", String((Number(localStorage.getItem("pont1")) + 1))) 
+		}
+
+		else
+			localStorage.setItem("pont2", (Number(localStorage.getItem("pont2")) + 1)) 
 		alert(`${currentSymbol} megnyerte a játékot!`);
 		const winnerWins = parseInt(localStorage.getItem(currentSymbol));
 		localStorage.setItem(currentSymbol, winnerWins + 1);
@@ -130,10 +138,16 @@ const HandleClick = (x, y) => {
 const Jatekosok = () => {
 	let jatekos1 = new Jatekos(localStorage.getItem("name1"));
 	let jatekos2 = new Jatekos(localStorage.getItem("name2"));
+	try{
+		jatekos1.pontok = Number(localStorage.getItem("pont1"))
+		jatekos2.pontok = Number(localStorage.getItem("pont2"))
+	}
+	catch{}
 	bal.querySelector(".nev").innerHTML = jatekos1.nev;
 	jobb.querySelector(".nev").innerHTML = jatekos2.nev;
 	bal.querySelector(".pontok").innerHTML = jatekos1.pontok;
 	jobb.querySelector(".pontok").innerHTML = jatekos2.pontok;
+	return [jatekos1,jatekos2]
 }
 
 const Render = () => {
@@ -175,6 +189,11 @@ class Jatekos {
 	}
 }
 
+const JatekTer = (jatekos1,jatekos2) =>{
+	jatekos1.pontok = localStorage.getItem("pont1")
+	jatekos2.pontok = localStorage.getItem("pont2")
+}
+
 const FormBeadva = () =>{
 	localStorage.setItem("name1",document.querySelector("#player1").value);
 	localStorage.setItem("name2",document.querySelector("#player2").value);
@@ -186,12 +205,14 @@ const FormBeadva = () =>{
 }
 
 const ResetGame = () => {
+	let jatekos1 = Jatekosok()[0];
+	let jatekos2 = Jatekosok()[1];
 	nehezites = localStorage.getItem("nehezites")
 	matrix = GenerateBuff(GenerateMatrix());
 	usedUpCells = [];
 	isNehezitesActive = false;
 	currentSymbol = "x";
-	Jatekosok();
+	JatekTer(jatekos1,jatekos2)
 	Render();
 };
 
